@@ -12,8 +12,7 @@ module.exports = function(grunt) {
           },
           constructor: {
               src: [
-                  'src/formArticul.js'
-
+                  'src/constructors/*.js'
               ],
               dest: 'build/constructor.js'
           },
@@ -35,7 +34,17 @@ module.exports = function(grunt) {
               }
           }
       },
-
+      jasmine: {
+          src: ['src/constructors/*.js'],
+          options: {
+              vendor: [
+                  'build/libs.js',
+                  'lib/jasmine-jquery.js'
+		      ],
+              specs: 'spec/*[sS]pec.js',
+              helpers: 'spec/*Helper.js'
+          }
+      },
       watch: {
           css: {
               files: ['css/*.scss'],
@@ -50,6 +59,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
 
   grunt.registerTask('default', ['concat', 'sass', 'watch']);
 
