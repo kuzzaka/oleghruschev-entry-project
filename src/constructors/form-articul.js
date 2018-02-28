@@ -8,7 +8,7 @@ const FormArticul = Backbone.View.extend({
     },
 
     openForm: function() {
-        this.$('.modal_wrap').removeClass("modal_close");
+        this.$('.modal_wrap').removeClass("block_close");
         this.item = new ProductsModel();
         this.itemView = new ProductsView({
             model: this.item
@@ -16,13 +16,14 @@ const FormArticul = Backbone.View.extend({
     },
 
     closeForm: function() {
-        this.$('.modal_wrap').addClass("modal_close");
+        this.$('.modal_wrap').addClass("block_close");
     },
 
     openProducts: function() {
-      this.$('.products_wrap').removeClass("modal_close");
-      this.$('.modal_wrap').addClass("modal_close");
-      this.item.updateUrl($('.textarea').val());
-      this.item.fetch()
+        this.$('.products_wrap').removeClass("block_close");
+        this.$('.modal_wrap').addClass("block_close");
+        this.item.updateUrl($('.textarea').val());
+        this.item.fetch();
+        this.$('.textarea').val("");
     }
 });

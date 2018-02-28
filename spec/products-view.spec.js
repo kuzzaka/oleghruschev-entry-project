@@ -6,22 +6,24 @@ describe('products-view', function () {
             })
         };
 
-    it('should render headline on model sync', function () {
-        spyOn(ProductsView.prototype, 'renderHeadline');
+    it('should render product information on model sync', function () {
+        spyOn(ProductsView.prototype, 'renderProductInformation');
         instance = createInstance();
         instance.model.trigger('sync');
-        expect(instance.renderHeadline).toHaveBeenCalledTimes(1);
+        expect(instance.renderProductInformation).toHaveBeenCalledTimes(1);
     });
 
     it('call the updateUrl', function() {
         spyOn(ProductsModel.prototype, 'updateUrl');
+        instance = createInstance();
         $('.append_products').trigger('click');
         expect(instance.model.updateUrl).toHaveBeenCalledTimes(1);
     });
 
     it('call the fetch', function() {
         spyOn(ProductsModel.prototype, 'fetch');
+        instance = createInstance();
         $('.append_products').trigger('click');
         expect(instance.model.fetch).toHaveBeenCalled();
-    })
+    });
 });
